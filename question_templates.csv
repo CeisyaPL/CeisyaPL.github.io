@@ -1,0 +1,21 @@
+type,question,option1,option2,option3,option4,correct_answer
+multiple_choice,What is 15 × 4?,45,50,60,65,60
+multiple_choice,Which number is prime?,15,21,23,25,23
+fill_blank,The square root of 144 is _____,,,,,12
+open_ended,Explain how to solve 23 × 5 using mental math,,,,,To solve 23 × 5: Multiply 23 by 10 to get 230 then divide by 2 to get 115.
+multiple_choice,Which planet is closest to the Sun?,Venus,Mercury,Mars,Earth,Mercury
+multiple_choice,What is the main function of chlorophyll?,Absorb water,Store energy,Absorb sunlight,Transport nutrients,Absorb sunlight
+fill_blank,The process of plants making their own food is called _____,,,,,photosynthesis
+open_ended,Explain the water cycle in nature,,,,,Water evaporates from surfaces into water vapor rises and cools to form clouds then falls as rain or snow which returns to oceans and ground.
+multiple_choice,Who wrote 'Romeo and Juliet'?,Charles Dickens,William Shakespeare,Jane Austen,Mark Twain,William Shakespeare
+multiple_choice,What is the past tense of 'speak'?,speaked,spoke,spoken,speaking,spoke
+fill_blank,The opposite of 'happy' is _____,,,,,sad
+open_ended,Describe your favorite book and why you like it,,,,,A good answer should include the book's title author main story and specific reasons for enjoying it.
+multiple_choice,What was the capital of the Aztec Empire?,Tenochtitlan,Cusco,Machu Picchu,Lima,Tenochtitlan
+multiple_choice,When did World War II end?,1943,1944,1945,1946,1945
+fill_blank,The first president of the United States was _____,,,,,George Washington
+open_ended,Explain the causes of World War II,,,,,World War II was caused by the Treaty of Versailles rise of fascism global depression policy of appeasement and Germany's invasion of Poland.
+multiple_choice,Which continent is France in?,Asia,Africa,Europe,South America,Europe
+multiple_choice,What is the capital of Australia?,Sydney,Melbourne,Perth,Canberra,Canberra
+fill_blank,The longest river in the world is the _____ River,,,,,Nile
+open_ended,Explain how mountains are formed,,,,,Mountains form through plate tectonics where Earth's plates collide pushing rock upward or through volcanic activity when magma pushes through the crust.

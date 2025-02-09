@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Quiz System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-size: 16px;
+        }
+        
+        /* Mobile-friendly container */
+        .quiz-container {
+            max-width: 100%;
+            margin: 15px auto;
+            padding: 15px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        /* Larger touch targets for mobile */
+        .form-control, .form-select, .btn {
+            min-height: 45px;
+            font-size: 16px;
+        }
+        
+        /* Make radio buttons easier to tap */
+        .form-check {
+            padding: 12px;
+            margin: 8px 0;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+        
+        .form-check-input {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+        
+        .form-check-label {
+            padding: 4px 0;
+            margin-left: 8px;
+        }
+        
+        /* Larger text areas for open-ended questions */
+        textarea.form-control {
+            min-height: 100px;
+        }
+        
+        /* Question styling */
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: white;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+        }
+        
+        /* Result styling */
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            display: none;
+            text-align: center;
+        }
+        
+        /* Header styling */
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        h5 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        /* Submit button */
+        .btn-primary {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        
+        /* Loading indicator */
+        .spinner-border {
+            width: 20px;
+            height: 20px;
+        }
+        
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            .quiz-container {
+                max-width: 800px;
+                margin: 30px auto;
+                padding: 20px;
+            }
+            
+            .btn-primary {
+                width: auto;
+                padding: 10px 30px;
+            }
+            
+            h1 {
+                font-size: 32px;
+            }
+        }
+        
+        /* Mobile input fixes */
+        input[type="text"],
+        input[type="radio"],
+        textarea,
+        select {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: text;
+            user-select: text;
+        }
+        
+        /* Make radio buttons and labels easier to tap */
+        .form-check {
+            position: relative;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        
+        .form-check-input {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            margin: 0;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+        }
+        
+        .form-check-label {
+            display: block;
+            margin-left: 35px;
+            padding: 5px 5px 5px 10px;
+            cursor: pointer;
+        }
+        
+        /* Text input enhancements */
+        input[type="text"].form-control {
+            -webkit-appearance: none;
+            appearance: none;
+            padding: 12px;
+            font-size: 16px;
+            height: auto;
+        }
+        
+        /* Select dropdown enhancements */
+        select.form-select {
+            -webkit-appearance: none;
+            appearance: none;
+            padding: 12px;
+            font-size: 16px;
+            height: auto;
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container quiz-container">
+        <h1 class="text-center mb-4">Online Quiz</h1>
+        
+        <!-- Student Information Form -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Student Information</h5>
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="studentName" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="studentName" 
+                                inputmode="text" 
+                                autocomplete="name"
+                                required>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="mb-3">
+                            <label for="className" class="form-label">Class</label>
+                            <select class="form-select" id="className" required>
+                                <option value="">Select Class</option>
+                                <optgroup label="Grade 7">
+                                    <option value="7A">7A</option>
+                                    <option value="7B">7B</option>
+                                    <option value="7C">7C</option>
+                                </optgroup>
+                                <optgroup label="Grade 8">
+                                    <option value="8A">8A</option>
+                                    <option value="8B">8B</option>
+                                    <option value="8C">8C</option>
+                                </optgroup>
+                                <optgroup label="Grade 9">
+                                    <option value="9A">9A</option>
+                                    <option value="9B">9B</option>
+                                    <option value="9C">9C</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject</label>
+                            <select class="form-select" id="subject" required>
+                                <option value="">Select Subject</option>
+                                <option value="Mathematics">Mathematics</option>
+                                <option value="Science">Science</option>
+                                <option value="English">English</option>
+                                <option value="History">History</option>
+                                <option value="Geography">Geography</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form id="quizForm">
+            <div id="questions"></div>
+            <button type="submit" class="btn btn-primary">Submit Quiz</button>
+        </form>
+        
+        <div id="result" class="result"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+</html>
